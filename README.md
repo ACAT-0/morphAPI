@@ -8,12 +8,18 @@ just use the MorphAPI:AddTransformation() function...
 
 ### AddTransformation(string name, table items, number id, integer minimum, NullItemID)
 name: the name of the transformation. 
+
 items: a table of the various CollectibleType items that your transformation uses.
+
 id: a little identifier for the transformation; relic from early prototyping of the api that i still need to remove
+
 minimum: the minimum amount of items from the items list needed in order to gain the transformation.
+
 NullItemID: the nullitemid object used for the transformation costume! you can set a nullcostume by doing `NullItemID.ID_YOUR_COOL_COSTUME = Isaac.GetCostumeIdByPath("gfx/my costume here.anm2")`
 
+
 this function returns a table that contains your useful transformation info, so hold on to that.
+
 example:
 ```lua
 mycooltransformation = MorphAPI:AddTransformation("cool transformation",{CollectibleType.ITEM1,CollectibleType.ITEM2},0,2,NullItemID.ID_GUPPY)
@@ -21,7 +27,10 @@ mycooltransformation = MorphAPI:AddTransformation("cool transformation",{Collect
 
 ### CheckTransformation(transformation,callback)
 put this in your cache evaluation callback to check/apply the transformation.
+
 transformation: the table that was returned from AddTransformation
+
+
 callback: optional. the *name* of a function that will be called when the transformation is applied.
 
 ### getStatus(transformation)
