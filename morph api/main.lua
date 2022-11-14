@@ -37,3 +37,4 @@ function MorphAPI:init()
 end
 
 MorphAPI:AddCallback(ModCallbacks.MC_POST_GAME_STARTED,MorphAPI.init)
+
