@@ -13,14 +13,16 @@ function MorphAPI:AddTransformation(name,items,id,min,costume)
     }
 end
 
-function MorphAPI:CheckTransformation(trans)
+function MorphAPI:CheckTransformation(trans,callback)
 if trans.status==false then
     local items=trans.items
     local ITEMCOUNT=0
 for i,v in pairs(items) do 
     if player:HasCollectible(v) then ITEMCOUNT=ITEMCOUNT+1 end
 ---@diagnostic disable-next-line: missing-parameter
-    if ITEMCOUNT>trans.min-1 then hud:ShowItemText(string.upper(trans.name).."!") trans.status=true sfx:Play(SoundEffect.SOUND_POWERUP_SPEWER) player:AddNullCostume(trans.costume) end
+    if ITEMCOUNT>trans.min-1 then hud:ShowItemText(string.upper(trans.name).."!") trans.status=true 
+        if not callback==nil then callback() end
+        sfx:Play(SoundEffect.SOUND_POWERUP_SPEWER) player:AddNullCostume(trans.costume) end
 end
 else return 0 end
 end
