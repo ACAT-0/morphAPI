@@ -19,7 +19,9 @@ if trans.status==false then
     local ITEMCOUNT=0
 for i,v in pairs(items) do 
     if player:HasCollectible(v) then ITEMCOUNT=ITEMCOUNT+1 end
----@diagnostic disable-next-line: missing-parameter
+--vscode incoming
+---@diagnostic disable-next-line: missing-parameter 
+--(shut the fuck up vscode)
     if ITEMCOUNT>trans.min-1 then hud:ShowItemText(string.upper(trans.name).."!") trans.status=true 
         if not callback==nil then callback() end
         sfx:Play(SoundEffect.SOUND_POWERUP_SPEWER) player:AddNullCostume(trans.costume) end
